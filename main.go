@@ -1,11 +1,19 @@
 /*
 This code demonstrates the implementation of a simple generative art system using Markov chains and quinary logic.
 
-Generative art involves creating artwork using algorithms, often resulting in unpredictable and unique outcomes. Markov chains are mathematical models that describe a sequence of events where the probability of each event depends only on the state attained in the previous event. Quinary logic, a system with five possible states, is used here to introduce variability into the generated artwork.
+Generative art involves creating artwork using algorithms, often resulting in unpredictable and unique outcomes.
+Markov chains are mathematical models that describe a sequence of events where the probability of each event
+depends only on the state attained in the previous event. Quinary logic, a system with five possible states,
+is used here to introduce variability into the generated artwork.
 
-In this implementation, a Markov chain is utilized to determine the transitions between different states of the quinary logic system, representing various visual elements or properties in the artwork. Each state corresponds to a different artistic element, such as color, shape, or texture. By iterating through the Markov chain, the program generates a sequence of states, which are then interpreted to produce the final artwork.
+In this implementation, a Markov chain is utilized to determine the transitions between different states of the quinary logic system,
+representing various visual elements or properties in the artwork. Each state corresponds to a different artistic element,
+such as color, shape, or texture. By iterating through the Markov chain, the program generates a sequence of states,
+which are then interpreted to produce the final artwork.
 
-Through the combination of Markov chains and quinary logic, this code exemplifies how algorithmic techniques can be applied to create visually captivating and dynamic generative art. The resulting artwork reflects the inherent complexity and richness that emerge from the interaction of simple rules and randomness.
+Through the combination of Markov chains and quinary logic, this code exemplifies how algorithmic techniques can be applied to
+create visually captivating and dynamic generative art. The resulting artwork reflects the inherent complexity and richness that emerge
+from the interaction of simple rules and randomness.
 */
 package main
 
