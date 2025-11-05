@@ -3,8 +3,6 @@ module github.com/ccianos/quinarymcgraphics
 go 1.22.1
 
 require (
-	github.com/BurntSushi/xgb v0.0.0-20210121224620-deaf085860bc // indirect
-	github.com/BurntSushi/xgbutil v0.0.0-20190907113008-ad855c713046 // indirect
 	github.com/fogleman/gg v1.3.0 // indirect
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
 	golang.org/x/image v0.15.0 // indirect
