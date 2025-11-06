@@ -23,9 +23,16 @@ type Multivector struct {
 }
 
 // newMultivector creates a new Multivector with zeroed (blank) images.
-func newMultivector(name string, bounds image.Rectangle) newMultivector {}
+func newMultivector(name string, bounds image.Rectangle) newMultivector {
+	return Multivector{
+		Name:     name,
+		Geometry: image.NewAlpha(bounds),
+		Energy:   image.NewGray(bounds),
+	}
+}
 
 // --- SDGA_Operator Interface ---
 
 // SDGA_Operator defines a transformation between states over time.
-type SDGA_Operator interface{}
+type SDGA_Operator interface {
+}
