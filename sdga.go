@@ -70,3 +70,5 @@ type SDGA_Operator interface {
 // GenesisOperator (𝐺): Transforms a state towards the Active Multivector (Ψ₁).
 // Models a controlled, linear powerup (Inclining/Expanding).
 type GenesisOperator struct{}
+
+func (g GenesisOperator) Apply(initial, target Multivector, durationSteps int) <-chan Multivector {}
