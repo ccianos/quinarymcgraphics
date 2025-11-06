@@ -19,3 +19,8 @@ type Multivector struct {
 	// Energy is a 2D map of energy levels (grayscale v0-255)
 	Energy *image.Gray
 }
+
+// --- SDGA_Operator Interface ---
+
+// SDGA_Operator defines a transformation between states over time.
+type SDGA_Operator interface{}
