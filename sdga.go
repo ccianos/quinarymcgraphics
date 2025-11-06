@@ -13,7 +13,7 @@ import (
 	"image"
 )
 
-// --- Multivector Defintion and Methods ---
+// --- MULTIVECTOR DEFINTION AND METHODS ---
 
 // Multivector represents a physical state (Ψ) in the SDGA framework.
 // It's defined by its geometry (shape) and energy distribution.
@@ -56,8 +56,13 @@ func (mv Multivector) String() string {
 		mv.Name, mv.TotalEnergy(), mv.Geometry.Bounds().Size())
 }
 
-// --- SDGA_Operator Interface ---
+// --- SDGA OPERATOR INTERFACE ---
 
 // SDGA_Operator defines a transformation between states over time.
 type SDGA_Operator interface {
+	// Apply launches a goroutine for calculating transformation.
+	// Returns a read-only channel streaming intermediate states.
+	Apply(initial, target Multivector, durationSteps int) <-chan Multivector
 }
+
+// --- OPERATOR IMPLEMENTATIONS ---
