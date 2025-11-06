@@ -38,6 +38,9 @@ func (mv Multivector) TotalEnergy() uint64 {
 	return total
 }
 
+// String() provide human-readable representation for logging.
+func (mv Multivector) String() string {}
+
 // --- SDGA_Operator Interface ---
 
 // SDGA_Operator defines a transformation between states over time.
