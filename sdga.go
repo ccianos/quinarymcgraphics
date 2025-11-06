@@ -7,3 +7,7 @@ Simulation engine, based on the concepts from the PRISM project.
 that operate on Multivectors over time.
 */
 package main
+
+// Multivector represents a physical state (Ψ) in the SDGA framework.
+// It's defined by its geometry (shape) and energy distribution.
+type Multivector struct{}
