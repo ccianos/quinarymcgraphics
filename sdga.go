@@ -71,10 +71,18 @@ type SDGA_Operator interface {
 // Models a controlled, linear powerup (Inclining/Expanding).
 type GenesisOperator struct{}
 
-func (g GenesisOperator) Apply(initial, target Multivector, durationSteps int) <-chan Multivector {}
+func (g GenesisOperator) Apply(initial, target Multivector, durationSteps int) <-chan Multivector {
+}
 
 // QuenchingOperator (𝑄): Transforms a state towards the Null Multivector (Ψ₀).
 // Models a rapid, non-linear energy dissipation (Declining/Converging).
 type QuenchingOperator struct{}
 
-func (q QuenchingOperator) Apply(initial, target Multivector, durationSteps int) <-chan Multivector {}
+func (q QuenchingOperator) Apply(initial, target Multivector, durationSteps int) <-chan Multivector {
+}
+
+// PotentialityOperator (𝑃): Instantly establishes the 'Standby' Multivector (Ψₚ).
+type PotentialityOperator struct{}
+
+func (p PotentialityOperator) Apply(initial, target Multivector, durationSteps int) <-chan Multivector {
+}
