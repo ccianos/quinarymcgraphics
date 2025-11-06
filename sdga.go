@@ -10,6 +10,8 @@ package main
 
 import "image"
 
+// --- Multivector Defintion and Methods ---
+
 // Multivector represents a physical state (Ψ) in the SDGA framework.
 // It's defined by its geometry (shape) and energy distribution.
 type Multivector struct {
@@ -19,6 +21,9 @@ type Multivector struct {
 	// Energy is a 2D map of energy levels (grayscale v0-255)
 	Energy *image.Gray
 }
+
+// newMultivector creates a new Multivector with zeroed (blank) images.
+func newMultivector() {}
 
 // --- SDGA_Operator Interface ---
 
