@@ -66,3 +66,7 @@ type SDGA_Operator interface {
 }
 
 // --- OPERATOR IMPLEMENTATIONS ---
+
+// GenesisOperator (𝐺): Transforms a state towards the Active Multivector (Ψ₁).
+// Models a controlled, linear powerup (Inclining/Expanding).
+type GenesisOperator struct{}
