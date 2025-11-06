@@ -8,6 +8,14 @@ that operate on Multivectors over time.
 */
 package main
 
+import "image"
+
 // Multivector represents a physical state (Ψ) in the SDGA framework.
 // It's defined by its geometry (shape) and energy distribution.
-type Multivector struct{}
+type Multivector struct {
+	Name string
+	// Geometry is a 2D mask for the shape (alpha values 0-255)
+	Geometry *image.Alpha
+	// Energy is a 2D map of energy levels (grayscale v0-255)
+	Energy *image.Gray
+}
