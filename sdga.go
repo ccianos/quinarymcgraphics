@@ -38,6 +38,15 @@ func newMultivector(name string, bounds image.Rectangle) newMultivector {
 // It only sums energy where geometry is present (Alpha > 0).
 func (mv Multivector) TotalEnergy() uint64 {
 	var total uint64
+	bounds := mv.Energy.Bounds()
+	for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
+		for x := bounds.Min.X; x < bounds.Max.X; x++ {
+			// Only count energy where geometry exists
+			if mv.Geometry.AlphaAt(x, y).A > 0 {
+				total += uint64(mv.Energy.GrayAt(x, y).Y)
+			}
+		}
+	}
 	return total
 }
 
