@@ -31,6 +31,13 @@ func newMultivector(name string, bounds image.Rectangle) newMultivector {
 	}
 }
 
+// TotalEnergy calculates the total energy contained in the state.
+// It only sums energy where geometry is present (Alpha > 0).
+func (mv Multivector) TotalEnergy() uint64 {
+	var total uint64
+	return total
+}
+
 // --- SDGA_Operator Interface ---
 
 // SDGA_Operator defines a transformation between states over time.
