@@ -8,7 +8,10 @@ that operate on Multivectors over time.
 */
 package main
 
-import "image"
+import (
+	"fmt"
+	"image"
+)
 
 // --- Multivector Defintion and Methods ---
 
@@ -39,7 +42,10 @@ func (mv Multivector) TotalEnergy() uint64 {
 }
 
 // String() provide human-readable representation for logging.
-func (mv Multivector) String() string {}
+func (mv Multivector) String() string {
+	return fmt.Sprintf("<Multivector: %s | Total Energy: %d | Shape: %s>",
+		mv.Name, mv.TotalEnergy(), mv.Geometry.Bounds().Size())
+}
 
 // --- SDGA_Operator Interface ---
 
