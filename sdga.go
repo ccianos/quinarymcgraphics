@@ -72,6 +72,11 @@ type SDGA_Operator interface {
 type GenesisOperator struct{}
 
 func (g GenesisOperator) Apply(initial, target Multivector, durationSteps int) <-chan Multivector {
+	out := make(chan Multivector)
+	go func() {
+		defer close(out)
+	}()
+	return out
 }
 
 // QuenchingOperator (𝑄): Transforms a state towards the Null Multivector (Ψ₀).
@@ -79,10 +84,20 @@ func (g GenesisOperator) Apply(initial, target Multivector, durationSteps int) <
 type QuenchingOperator struct{}
 
 func (q QuenchingOperator) Apply(initial, target Multivector, durationSteps int) <-chan Multivector {
+	out := make(chan Multivector)
+	go func() {
+		defer close(out)
+	}()
+	return out
 }
 
 // PotentialityOperator (𝑃): Instantly establishes the 'Standby' Multivector (Ψₚ).
 type PotentialityOperator struct{}
 
 func (p PotentialityOperator) Apply(initial, target Multivector, durationSteps int) <-chan Multivector {
+	out := make(chan Multivector)
+	go func() {
+		defer close(out)
+	}()
+	return out
 }
