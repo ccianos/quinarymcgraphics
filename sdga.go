@@ -98,6 +98,13 @@ func (p PotentialityOperator) Apply(initial, target Multivector, durationSteps i
 	out := make(chan Multivector)
 	go func() {
 		defer close(out)
+		// This is an instant change.
+		// Copy created to avoid data races if original target is modified.
+		targetCopy := newMultivector(target.Name, target.Geometry.Bounds())
+		copy(targetCopy.Geometry.Pix, target.Geometry.Pix)
+		copy(targetCopy.Energy.Pix, target.Energy.Pix)
+
+		out <- targetCopy
 	}()
 	return out
 }
