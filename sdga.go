@@ -11,6 +11,7 @@ package main
 import (
 	"fmt"
 	"image"
+	"image/color"
 )
 
 // --- MULTIVECTOR DEFINTION AND METHODS ---
@@ -73,9 +74,38 @@ type GenesisOperator struct{}
 
 func (g GenesisOperator) Apply(initial, target Multivector, durationSteps int) <-chan Multivector {
 	out := make(chan Multivector)
+	bounds := initial.Geometry.Bounds()
+
 	go func() {
 		defer close(out)
+		for i := 0; i <= durationSteps; i++ {
+			t := float64(i) / float64(durationSteps) // Linear interpolation factor (0.0 to 1.1)
+
+			// Create new intermediate image buffers
+			interGeom := image.NewAlpha(bounds)
+			interEnergy := image.NewGray(bounds)
+
+			for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
+				for x := bounds.Min.X; x < bounds.Max.X; x++ {
+					// Linear Interpolation (Lerp) Geometry
+					geomA := float64(initial.Geometry.AlphaAt(x, y).A)
+					geomB := float64(target.Geometry.AlphaAt(x, y).A)
+					interGeom.SetAlpha(x, y, color.Alpha{A: uint8(geomA*(1-t) + geomB*t)})
+
+					// Lerp for Energy
+					energyA := float64(initial.Energy.GrayAt(x, y).Y)
+					energyB := float64(target.Energy.GrayAt(x, y).Y)
+					interEnergy.SetGray(x, y, color.Gray{Y: uint8(energyA*(1-t) + energyB*t)})
+				}
+			}
+			out <- Multivector{
+				Name:     fmt.Sprintf("Genesis-%.0f%%", t*100),
+				Geometry: interGeom,
+				Energy:   interEnergy,
+			}
+		}
 	}()
+
 	return out
 }
 
