@@ -26,7 +26,7 @@ type Multivector struct {
 }
 
 // newMultivector creates a new Multivector with zeroed (blank) images.
-func newMultivector(name string, bounds image.Rectangle) newMultivector {
+func newMultivector(name string, bounds image.Rectangle) Multivector {
 	return Multivector{
 		Name:     name,
 		Geometry: image.NewAlpha(bounds),
