@@ -128,6 +128,25 @@ func (q QuenchingOperator) Apply(initial, target Multivector, durationSteps int)
 			// Intermediate image buffers
 			interGeom := image.NewAlpha(bounds)
 			interEnergy := image.NewGray(bounds)
+
+			for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
+				for x := bounds.Min.X; x < bounds.Max.X; x++ {
+					// Interpolate from target to initial using the decay factor
+					geomA := float64(target.Geometry.AlphaAt(x, y).A)
+					geomB := float64(initial.Geometry.AlphaAt(x, y).A)
+					interGeom.SetAlpha(x, y, color.Alpha{A: unint8(geomA + (geomB-geomA)*decayFactor)})
+
+					energyA := float64(target.Energy.GrayAt(x, y).Y)
+					energyB := float64(initial.Energy.GrayAt(x, y).Y)
+					interEnergy.SetGray(x, y, color.Gray{Y: unint8(energyA + (energyB-energyA)*decayFactor)})
+				}
+			}
+
+			out <- Multivector{
+				Name:     Sprintf("Quench-%.0f%%", t*100),
+				Geometry: interGeom,
+				Energy:   interEnergy,
+			}
 		}
 	}()
 	return out
