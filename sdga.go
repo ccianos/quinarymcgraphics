@@ -116,9 +116,19 @@ type QuenchingOperator struct{}
 
 func (q QuenchingOperator) Apply(initial, target Multivector, durationSteps int) <-chan Multivector {
 	out := make(chan Multivector)
-	decayFactor := math.Pow(1.0-t, 3.0) // Non-linear decay (T³)
+	bounds := initial.Geometry.Bounds()
+
 	go func() {
 		defer close(out)
+
+		for i := 0; i <= durationSteps; i++ {
+			t := float64(i) / float64(durationSteps) // 0.0 to 1.0
+			decayFactor := math.Pow(1.0-t, 3.0)      // Non-linear decay (t³)
+
+			// Intermediate image buffers
+			interGeom := image.NewAlpha(bounds)
+			interEnergy := image.NewGray(bounds)
+		}
 	}()
 	return out
 }
