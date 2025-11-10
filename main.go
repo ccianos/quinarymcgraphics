@@ -24,4 +24,12 @@ func main() {
 	fmt.Println("--- Phase 1 (text simulation): Initializing SDGA System ---")
 
 	// --- Define Stable States ---
+
+	// 2D spatial dimension of simulation
+
+	// PSI_NULL (Ψ₀): The Inactive state.
+
+	// PSI_ACTIVE (Ψ₁): The Active state.
+
+	// PSI_POTENTIAL (Ψₚ): The Potential state.
 }
