@@ -55,6 +55,8 @@ func main() {
 	// --- Run Simulation Sequence  ---
 	fmt.Println("Initial State:", PSI_NULL)
 	currentState := PSI_NULL
+	// Save history for rendering later
+	var simHistory []Multivector
 
 	// Apply Potentiality: Transition to Standby Potential state
 
