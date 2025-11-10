@@ -8,7 +8,10 @@ and displays it in an X-Window.
 */
 package main
 
-import "flag"
+import (
+	"flag"
+	"fmt"
+)
 
 func main() {
 	// --- CLI ---
@@ -17,4 +20,8 @@ func main() {
 	flag.Int("width", "800", "Image width (simulation X-axis).")
 	flag.Int("height", "600", "Image height (simulation Time-axis).")
 	flag.Parse()
+
+	fmt.Println("--- Phase 1 (text simulation): Initializing SDGA System ---")
+
+	// --- Define Stable States ---
 }
