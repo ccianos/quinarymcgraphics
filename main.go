@@ -12,6 +12,7 @@ import (
 	"flag"
 	"fmt"
 	"image"
+	"image/color"
 )
 
 func main() {
@@ -34,6 +35,17 @@ func main() {
 	PSI_NULL := newMultivector("Null (Ψ₀)", simShape)
 
 	// PSI_ACTIVE (Ψ₁): The Active state.
+	// newMultivector Ψ₁ initialized with full geometry and high energy.
+	PSI_ACTIVE := newMultivector("Active (Ψ₁)", simShape)
+	activeGeomY := simShape.Dy() / 2 // Center 2-pixel element
+	for x := 0; x < simShape.Dx(); x++ {
+		// Set Geometry (Alpha)
+		PSI_ACTIVE.Geometry.SetAlpha(x, activeGeomY-1, color.Alpha{A: 255})
+		PSI_ACTIVE.Geometry.SetAlpha(x, activeGeomY, color.Alpha{A: 255})
+		// Set Energy (Grayscale)
+		PSI_ACTIVE.Energy.SetGray(x, activeGeomY-1, color.Gray{Y: 250}) // 250 out of 255
+		PSI_ACTIVE.Energy.SetGray(x, activeGeomY, color.Gray{Y: 250})
+	}
 
 	// PSI_POTENTIAL (Ψₚ): The Potential state.
 }
