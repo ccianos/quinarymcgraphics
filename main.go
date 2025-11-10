@@ -48,4 +48,7 @@ func main() {
 	}
 
 	// PSI_POTENTIAL (Ψₚ): The Potential state.
+	// newMultivector Ψₚ initialized with 0 energy and full geometry (from Active state).
+	PSI_POTENTIAL := newMultivector("Potential (Ψₚ)", simShape)
+	PSI_POTENTIAL.Geometry = PSI_ACTIVE.Geometry
 }
