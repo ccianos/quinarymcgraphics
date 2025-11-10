@@ -11,6 +11,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"image"
 )
 
 func main() {
@@ -26,8 +27,11 @@ func main() {
 	// --- Define Stable States ---
 
 	// 2D spatial dimension of simulation
+	simShape := image.Rect(0, 0, 100, 10) // width: 100, height: 10
 
 	// PSI_NULL (Ψ₀): The Inactive state.
+	// newMultivector Ψ₀ initialized with 0 energy and 0 geometry (transparent).
+	PSI_NULL := newMultivector("Null (Ψ₀)", simShape)
 
 	// PSI_ACTIVE (Ψ₁): The Active state.
 
