@@ -51,4 +51,14 @@ func main() {
 	// newMultivector Ψₚ initialized with 0 energy and full geometry (from Active state).
 	PSI_POTENTIAL := newMultivector("Potential (Ψₚ)", simShape)
 	PSI_POTENTIAL.Geometry = PSI_ACTIVE.Geometry
+
+	// --- Run Simulation Sequence  ---
+	fmt.Println("Initial State:", PSI_NULL)
+	currentState := PSI_NULL
+
+	// Apply Potentiality: Transition to Standby Potential state
+
+	// Apply Genesis: Transition to Active state
+
+	// Apply Quench: Transition to Inactive state
 }
