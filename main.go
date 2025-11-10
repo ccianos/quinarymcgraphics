@@ -60,13 +60,22 @@ func main() {
 
 	// Apply Potentiality: Transition to Standby Potential state
 	opChan1 := PotentialityOperator{}.Apply(currentState, PSI_POTENTIAL, 0)
+	for state := range opChan1 {
+		currentState = state
+	}
 	fmt.Println("Transition complete. Current state:", currentState.Name)
 
 	// Apply Genesis: Transition to Active state
 	opChan2 := GenesisOperator{}.Apply(currentState, PSI_ACTIVE, 50)
+	for state := range opChan2 {
+		currentState = state
+	}
 	fmt.Println("Transition complete. Current state:", currentState.Name)
 
 	// Apply Quench: Transition to Inactive state
 	opChan3 := QuenchingOperator{}.Apply(currentState, PSI_NULL, 20)
+	for state := range opChan3 {
+		currentState = state
+	}
 	fmt.Println("Transition complete. Current state:", currentState.Name)
 }
