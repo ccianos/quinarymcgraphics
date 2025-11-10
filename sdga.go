@@ -134,16 +134,16 @@ func (q QuenchingOperator) Apply(initial, target Multivector, durationSteps int)
 					// Interpolate from target to initial using the decay factor
 					geomA := float64(target.Geometry.AlphaAt(x, y).A)
 					geomB := float64(initial.Geometry.AlphaAt(x, y).A)
-					interGeom.SetAlpha(x, y, color.Alpha{A: unint8(geomA + (geomB-geomA)*decayFactor)})
+					interGeom.SetAlpha(x, y, color.Alpha{A: uint8(geomA + (geomB-geomA)*decayFactor)})
 
 					energyA := float64(target.Energy.GrayAt(x, y).Y)
 					energyB := float64(initial.Energy.GrayAt(x, y).Y)
-					interEnergy.SetGray(x, y, color.Gray{Y: unint8(energyA + (energyB-energyA)*decayFactor)})
+					interEnergy.SetGray(x, y, color.Gray{Y: uint8(energyA + (energyB-energyA)*decayFactor)})
 				}
 			}
 
 			out <- Multivector{
-				Name:     Sprintf("Quench-%.0f%%", t*100),
+				Name:     fmt.Sprintf("Quench-%.0f%%", t*100),
 				Geometry: interGeom,
 				Energy:   interEnergy,
 			}
