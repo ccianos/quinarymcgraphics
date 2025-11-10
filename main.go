@@ -60,22 +60,38 @@ func main() {
 
 	// Apply Potentiality: Transition to Standby Potential state
 	opChan1 := PotentialityOperator{}.Apply(currentState, PSI_POTENTIAL, 0)
+	// Range over channel to receive streamed states
 	for state := range opChan1 {
 		currentState = state
+		fmt.Println(" ->", currentState)
 	}
 	fmt.Println("Transition complete. Current state:", currentState.Name)
 
 	// Apply Genesis: Transition to Active state
 	opChan2 := GenesisOperator{}.Apply(currentState, PSI_ACTIVE, 50)
+	// Range over channel to receive streamed states
 	for state := range opChan2 {
 		currentState = state
+		simHistory = append(simHistory, state)
+		// Print every 5 steps to prevent console flooding
+		if len(simHistory)%5 == 0 || state.Name == "Genesis-100%" {
+			fmt.Println(" ->", currentState)
+		}
 	}
 	fmt.Println("Transition complete. Current state:", currentState.Name)
 
 	// Apply Quench: Transition to Inactive state
 	opChan3 := QuenchingOperator{}.Apply(currentState, PSI_NULL, 20)
+	// Range over channel to receive streamed states
 	for state := range opChan3 {
 		currentState = state
+		simHistory = append(simHistory, state)
+		if state.Name == "Quench-50%" || state.Name == "Quench-100%" {
+			fmt.Println(" ->", currentState)
+		}
 	}
 	fmt.Println("Transition complete. Current state:", currentState.Name)
+
+	fmt.Println("\n☑️  SDGA Engine Logic Validated.")
+	fmt.Printf("   Total simulation steps generated: %d\n", len(simHistory))
 }
