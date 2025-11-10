@@ -59,8 +59,11 @@ func main() {
 	var simHistory []Multivector
 
 	// Apply Potentiality: Transition to Standby Potential state
+	fmt.Println("Transition complete. Current state:", currentState.Name)
 
 	// Apply Genesis: Transition to Active state
+	fmt.Println("Transition complete. Current state:", currentState.Name)
 
 	// Apply Quench: Transition to Inactive state
+	fmt.Println("Transition complete. Current state:", currentState.Name)
 }
